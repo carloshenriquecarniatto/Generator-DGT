@@ -1,0 +1,31 @@
+.btn-primary, .btn-primary:active, .btn-primary:visited {
+    background-color: gray ;
+    border-color: gray ;
+    color: white;
+}
+.btn-primary:hover{
+    background-color: lightgray ;
+    border-color: lightgray ;
+    color: black;
+}
+.accordion-button:not(.collapsed){
+    background-color: lightgray ;
+    color: black;
+}
+
+.accordion-button{
+    background-color: gray ;
+    color: white;
+    border-color: gray;	
+    box-shadow:none ;
+}
+td{
+    align-items: center;
+}
+
+.row-background{
+    width: 150px;
+    height: 70;
+    font-size: x-large;
+    background-image: url('background-row.svg');
+}
