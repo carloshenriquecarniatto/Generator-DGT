@@ -102,6 +102,7 @@ function generateNextMatricula(inputValue) {
     let numericDigits = parseInt(inputValue.substring(0, 4));
     let lettersDigits = inputValue.substring(4, 7);
     if (numericDigits === 9999) {
+        numericDigits = 0;
         lettersDigits = generateNextThreeDigits(lettersDigits);
     } else {
         numericDigits += 1;
