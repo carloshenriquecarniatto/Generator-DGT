@@ -8,10 +8,25 @@ $('#btnGenerarMatricula').click(() => {
 
 $('#btnGenereteNextMatricula').click(() => {
     const inputValue = getInputValue().toUpperCase();
-    const nextMatricula = generateNextMatricula(inputValue);
-    addMatriculaToDiv(addSpaceAtPosition(nextMatricula, 4));
+    if (validateMatriculaField()) {
+        $("#proximaMatriculaError").hide();
+        const nextMatricula = generateNextMatricula(inputValue);
+        addMatriculaToDiv(addSpaceAtPosition(nextMatricula, 4));
+    } else {
+        $("#proximaMatriculaError").show();
+    }
+
 });
 
+
+function validateMatriculaField() {
+    var inputValue = getInputValue().trim();
+    if (inputValue === "") {
+        return false;
+    } else {
+        return true;
+    }
+}
 function addSpaceAtPosition(str, position) {
     if (position > 0 && position <= str.length) {
         const firstPart = str.slice(0, position);
