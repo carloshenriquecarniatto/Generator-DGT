@@ -8,10 +8,25 @@ $('#btnGenerarMatricula').click(() => {
 
 $('#btnGenereteNextMatricula').click(() => {
     const inputValue = getInputValue().toUpperCase();
-    const nextMatricula = generateNextMatricula(inputValue);
-    addMatriculaToDiv(addSpaceAtPosition(nextMatricula, 4));
+    if (validateMatriculaField()) {
+        $("#proximaMatriculaError").hide();
+        const nextMatricula = generateNextMatricula(inputValue);
+        addMatriculaToDiv(addSpaceAtPosition(nextMatricula, 4));
+    } else {
+        $("#proximaMatriculaError").show();
+    }
+
 });
 
+
+function validateMatriculaField() {
+    var inputValue = getInputValue().trim();
+    if (inputValue === "") {
+        return false;
+    } else {
+        return true;
+    }
+}
 function addSpaceAtPosition(str, position) {
     if (position > 0 && position <= str.length) {
         const firstPart = str.slice(0, position);
@@ -40,7 +55,7 @@ function formatNumber(number, length) {
 }
 
 function generateRandomLetters(length) {
-    const alphabet = 'BCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const alphabet = 'BCDFGHJKLMNPRSTVWXZ';
     let randomLetters = '';
 
     for (let i = 0; i < length; i++) {
@@ -52,7 +67,7 @@ function generateRandomLetters(length) {
 }
 
 function generateNextLetter(value) {
-    const alphabet = 'BCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const alphabet = 'BCDFGHJKLMNPRSTVWXZ';
     let nextDigitIndex = alphabet.indexOf(value);
     let nextDigit = (nextDigitIndex === 24) ? 0 : nextDigitIndex + 1;
     return alphabet.charAt(nextDigit);
@@ -63,7 +78,7 @@ function getRandomInt(min, max) {
 }
 
 function generateNextDigit(digit) {
-    const alphabet = 'BCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const alphabet = 'BCDFGHJKLMNPRSTVWXZ';
     const nextIndex = (alphabet.indexOf(digit) + 1) % alphabet.length;
     const nextDigit = alphabet.charAt(nextIndex);
     return nextDigit;
